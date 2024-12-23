@@ -36,4 +36,10 @@ jobs:
         
       - name: Create docker image
         run: docker build -t simpledatetime:latest .
+
+      - name: Login to docker
+        run: docker login -u sinjoy -p Change_me!
+
+      - name: Push to registry
+        run: docker push simpledatetime:latest       
    

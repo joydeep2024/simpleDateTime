@@ -18,6 +18,7 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
   test:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -25,4 +26,14 @@ jobs:
       
       - name: Test the code
         run: python -m unittest tests/test_dateTimeUnitTest.py
+
+  push-to-registry:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+        
+      - name: Create docker image
+        run: docker build -t simpleDateTime:latest .
    

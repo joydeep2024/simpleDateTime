@@ -35,11 +35,11 @@ jobs:
         uses: actions/checkout@v4
         
       - name: Create docker image
-        run: docker build -t simpledatetime:latest .
+        run: docker build -t sinjoy/simpledatetime:latest .
 
       - name: Login to docker
-        run: docker login -u sinjoy -p Change_me!
+        run: docker login -u sinjoy -p Change_me! docker.io
 
       - name: Push to registry
-        run: docker push simpledatetime:latest       
+        run: docker push sinjoy/simpledatetime:latest       
    
